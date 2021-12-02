@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:background="@color/amp_blue"
+        android:background="@drawable/button_background_amp_blue_5dp"
         android:text="@string/join"
         android:textColor="@color/white"
         android:textSize="16sp" />
