@@ -12,8 +12,20 @@ import android.widget.EditText;
 import org.jitsi.meet.sdk.JitsiMeetActivity;
 import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
 
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,8 +48,12 @@ public class MainActivity extends AppCompatActivity {
         groupName.setText(sharedPreferences.getString("roomName", null));
     }
 
+    @SuppressLint("GetInstance")
     private void createOrJoinRoom(String roomName) {
         saveRoomName(roomName);
+
+        roomName = Arrays.toString(roomName.getBytes());
+
         try {
             JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
                     .setServerURL(new URL("https://meet.jit.si"))
