@@ -1,0 +1,2 @@
+rootProject.name = "MyVideoChat"
+include ':app'
